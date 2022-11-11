@@ -1,4 +1,4 @@
-# MoeGoe の Webアプリバージョン
+# MoeGoe の ローカルWebアプリバージョン
 
 - TTS のモデルデータのみ対応
 - Clener の選択機能追加
