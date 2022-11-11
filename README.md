@@ -4,6 +4,9 @@ TTS のモデルデータのみ対応<br>
 <br>
 Clener の選択機能追加<br>
 marine でのアクセント補正追加<br>
+
+![イラスト](https://user-images.githubusercontent.com/109923659/201433573-47ca6c32-855d-4e9a-b63f-3ba42bc3c46d.jpg)
+
 <br>
 # CREDITS
 - [MoeGoe](https://github.com/CjangCjengh/MoeGoe)
