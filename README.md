@@ -19,10 +19,12 @@ windows 10<br>
 画面右の Releases から WebApp_MoeGoe.zip ダウンロード<br>
 パスに日本語が含まれないフォルダで解凍<br>
 <br>
-モデルデータ( .pth )と設定ファイル( .json )を好きな名前のフォルダに入れて<br>
+モデルデータ( .pth )と設定ファイル( .json )をセット毎にを好きな名前のフォルダに入れて<br>
 models フォルダに入れる<br>
 例<br>
 ./models/AAAAA/model.pth and config.json<br>
+./models/BBBBB/model.pth and config.json<br>
+./models/CCCCC/model.pth and config.json<br>
 <br>
 WebApp_MoeGoe.exe 実行<br>
 コンソールに<br>
