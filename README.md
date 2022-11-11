@@ -1,8 +1,8 @@
-MoeGoe の Webアプリバージョン<br>
+# MoeGoe の Webアプリバージョン
 
-- TTS のモデルデータのみ対応<br>
-- Clener の選択機能追加<br>
-- marine でのアクセント補正追加<br>
+- TTS のモデルデータのみ対応
+- Clener の選択機能追加
+- marine でのアクセント補正追加
 
 ![イラスト](https://user-images.githubusercontent.com/109923659/201433573-47ca6c32-855d-4e9a-b63f-3ba42bc3c46d.jpg)
 
@@ -49,7 +49,7 @@ chrome で http://127.0.0.1:15000 にアクセス<br>
 
 # モデルデータ
 このリポジトリにモデルデータは含まれていません<br>
-リンク先の利用規約を読んでください<br>
+リンク先の利用規約を読んだ上、ダウンロードしてください<br>
 <br>
 CjangCjengh/TTSModels<br>
 https://github.com/CjangCjengh/TTSModels<br>
@@ -74,7 +74,10 @@ CLENER は入力文字列を音素表現の文字列に変換する物です<br>
 日本語変換時のアクセントを補正<br>
 詳細は<br>
 marine (https://github.com/6gsn/marine)<br>
-<br>
+
+- その他<br>
+エラーチェックが甘いので<br>
+なんかエラー出たら、サーバー再起動、ブラウザ再読み込みしてください<br>
 
 
 
