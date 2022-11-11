@@ -26,9 +26,9 @@ windows 10<br>
 モデルデータ( .pth )と設定ファイル( .json )をセット毎にを好きな名前のフォルダに入れて<br>
 models フォルダに入れる<br>
 例<br>
-./models/AAAAA/model.pth and config.json<br>
-./models/BBBBB/model.pth and config.json<br>
-./models/CCCCC/model.pth and config.json<br>
+./models/AAAAA/model.pth と config.json<br>
+./models/BBBBB/model.pth と config.json<br>
+./models/CCCCC/model.pth と config.json<br>
 <br>
 WebApp_MoeGoe.exe 実行<br>
 コンソールに<br>
@@ -71,7 +71,7 @@ CLENER は入力文字列を音素表現の文字列に変換する物です<br>
 [ZH]你好。[ZH]<br>
 
 - marine を使う<br>
-日本語変換時のアクセントを付けます<br>
+日本語変換時のアクセントを補正<br>
 詳細は<br>
 marine (https://github.com/6gsn/marine)<br>
 <br>
