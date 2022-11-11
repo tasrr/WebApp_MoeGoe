@@ -1,64 +1,50 @@
-# Links
-- [MoeGoe_GUI](https://github.com/CjangCjengh/MoeGoe_GUI)
-- [Pretrained models](https://github.com/CjangCjengh/TTSModels)
+MoeGoe の Webアプリバージョン<br>
+<br>
+TTS のモデルデータのみ対応<br>
+<br>
+Clener の選択機能追加<br>
+marine でのアクセント補正追加<br>
+<br>
+# CREDITS
+- [MoeGoe](https://github.com/CjangCjengh/MoeGoe)
+- [pyopenjtalk](https://github.com/r9y9/pyopenjtalk)
+- [marine](https://github.com/6gsn/marine)
+- [Flask](https://palletsprojects.com/p/flask/)
 
-# How to use
-Run MoeGoe.exe
+# 必要環境
+windows 10<br>
+ブラウザは chrome でしか動作確認してません<br>
+<br>
+# インストール
+画面右の Releases から WebApp_MoeGoe.zip ダウンロード<br>
+パスに日本語が含まれないフォルダで解凍<br>
+<br>
+モデルデータ( .pth )と設定ファイル( .json )を好きな名前のフォルダに入れて<br>
+models フォルダに入れる<br>
+例<br>
+./models/AAAAA/model.pth and config.json<br>
+<br>
+WebApp_MoeGoe.exe 実行<br>
+コンソールに<br>
 ```
-Path of a VITS model: path\to\model.pth
-Path of a config file: path\to\config.json
-INFO:root:Loaded checkpoint 'path\to\model.pth' (iteration XXX)
+* Serving Flask app 'WebApp_MoeGoe'
+ * Debug mode: off
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on http://127.0.0.1:15000
+Press CTRL+C to quit
 ```
-## Text to speech
-```
-TTS or VC? (t/v):t
-Text to read: こんにちは。
-ID      Speaker
-0       XXXX
-1       XXXX
-2       XXXX
-Speaker ID: 0
-Path to save: path\to\demo.wav
-Successfully saved!
-```
-## Voice conversion
-```
-TTS or VC? (t/v):v
-Path of an audio file to convert:
-path\to\origin.wav
-ID      Speaker
-0       XXXX
-1       XXXX
-2       XXXX
-Original speaker ID: 0
-Target speaker ID: 6
-Path to save: path\to\demo.wav
-Successfully saved!
-```
-## HuBERT-VITS
-```
-Path of a hubert-soft model: path\to\hubert-soft.pt
-Path of an audio file to convert:
-path\to\origin.wav
-ID      Speaker
-0       XXXX
-1       XXXX
-2       XXXX
-Target speaker ID: 6
-Path to save: path\to\demo.wav
-Successfully saved!
-```
-## W2V2-VITS
-```
-Path of a w2v2 dimensional emotion model: path\to\model.onnx
-TTS or VC? (t/v):t
-Text to read: こんにちは。
-ID      Speaker
-0       XXXX
-1       XXXX
-2       XXXX
-Speaker ID: 0
-Path of an emotion reference: path\to\reference.wav
-Path to save: path\to\demo.wav
-Successfully saved!
-```
+が出れば起動成功<br>
+※　WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.<br>
+この赤字メッセージは Flask のデフォルトメッセージなので大丈夫です<br>
+<br>
+chrome で http://127.0.0.1:15000 にアクセス<br>
+<br>
+
+# モデルデータ
+このリポジトリにモデルデータは含まれていません<br>
+リンク先の利用規約を読んでください<br>
+<br>
+CjangCjengh/TTSModels<br>
+https://github.com/CjangCjengh/TTSModels<br>
+<br>
+
