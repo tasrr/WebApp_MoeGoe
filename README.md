@@ -1,13 +1,13 @@
 MoeGoe の Webアプリバージョン<br>
-<br>
-TTS のモデルデータのみ対応<br>
-<br>
-Clener の選択機能追加<br>
-marine でのアクセント補正追加<br>
+
+- TTS のモデルデータのみ対応<br>
+- Clener の選択機能追加<br>
+- marine でのアクセント補正追加<br>
 
 ![イラスト](https://user-images.githubusercontent.com/109923659/201433573-47ca6c32-855d-4e9a-b63f-3ba42bc3c46d.jpg)
 
 <br>
+
 # CREDITS
 - [MoeGoe](https://github.com/CjangCjengh/MoeGoe)
 - [pyopenjtalk](https://github.com/r9y9/pyopenjtalk)
@@ -41,7 +41,8 @@ Press CTRL+C to quit
 ```
 が出れば起動成功<br>
 ※　WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.<br>
-この赤字メッセージは Flask のデフォルトメッセージなので大丈夫です<br>
+この赤字メッセージは使ってるフレームワーク Flask のデフォルトメッセージです<br>
+
 <br>
 chrome で http://127.0.0.1:15000 にアクセス<br>
 <br>
@@ -53,4 +54,29 @@ chrome で http://127.0.0.1:15000 にアクセス<br>
 CjangCjengh/TTSModels<br>
 https://github.com/CjangCjengh/TTSModels<br>
 <br>
+
+# 説明
+- モデルデータを入れたフォルダを、スピーカーを選んで生成を押してください<br>
+
+- 設定項目の CLENER<br>
+CLENER は入力文字列を音素表現の文字列に変換する物です<br>
+これの種類によって [JA] が必要になったりします<br>
+
+- [JA]自動処理<br>
+チェックしておけば必要な CLENER の時は内部で勝手に [JA] で囲みます<br>
+もし日本語以外を喋らせたいときは、チェックを外して<br>
+自分で各言語のラベルをテキストに入力してください<br>
+モデルデータや CLENER によっては元々多言語対応していません<br>
+例<br>
+[ZH]你好。[ZH]<br>
+
+- marine を使う<br>
+日本語変換時のアクセントを付けます<br>
+詳細は<br>
+marine (https://github.com/6gsn/marine)<br>
+<br>
+
+
+
+
 
