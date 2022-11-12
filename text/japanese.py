@@ -64,6 +64,11 @@ _real_hatsuon = [(re.compile('%s' % x[0]), x[1]) for x in [
     (r'N([↑↓]*[kg])', r'ŋ\1')
 ]]
 
+run_marine = False;
+def set_run_marine( flg ):
+    global run_marine
+    run_marine = flg;
+
 
 def symbols_to_japanese(text):
     for regex, replacement in _symbols_to_japanese:
@@ -81,7 +86,8 @@ def japanese_to_romaji_with_accent(text):
         if re.match(_japanese_characters, sentence):
             if text != '':
                 text += ' '
-            labels = pyopenjtalk.extract_fullcontext(sentence)
+            global run_marine
+            labels = pyopenjtalk.extract_fullcontext(sentence, run_marine=run_marine)
             for n, label in enumerate(labels):
                 phoneme = re.search(r'\-([^\+]*)\+', label).group(1)
                 if phoneme not in ['sil', 'pau']:
