@@ -1,0 +1,580 @@
+<html>
+
+<head>
+</head>
+
+
+<body>
+
+<div style="display: flex; flex-direction: column; margin: 0px 0px 0px 20px;"> 
+	<div style="display: flex; flex-direction: row;"> 
+
+		<div style="display: flex; flex-direction: column;"> 
+			<label style="font-size: 80%;"><b>MODEL FOLDER</b></label>
+			<select id="selModel" style="width: 300px;"></select>
+		</div>
+
+		<div style="display: flex; flex-direction: column;"> 
+			<label style="font-size: 80%;"><b>SPEAKER</b></label>
+			<select id="selSpeaker" style="width: 200px;" size="1"></select>
+		</div>		
+		<div style="display: flex; flex-direction: column;"> 
+			<label style="font-size: 80%;"><b>SPEAKER 単語で絞込</b></label>
+			<input type="text" id="selSpeakerSerch" style="width: 150px;" value="">
+		</div>		
+
+		<div style="display: flex; flex-direction: row;">
+			<label id="info" style="font-size: 70%; width: 350px; height: 40px; border:1px solid #333333; margin: 0px 0px 0px 50px;">
+				Info.
+			</label>
+		</div>
+
+	</div>
+
+</div>
+
+
+<div style="display: flex; flex-direction: row; border:1px solid #333333; margin: 10px 0px 0px 20px;"> 
+
+	<div style="display: flex; flex-direction: column; margin: 0px 0px 0px 10px;"> 
+		<div style="flex-direction: row;">
+
+			<label style="font-size: 80%;"><b>CLENER</b></label>
+
+			<input id="chkAutoJA" type="checkbox"  style="margin: 0px 0px 0px 20px;" checked>
+			<label style="font-size: 60%; margin: 0px 0px 10px 0px;"><b>[JA]自動処理</b></label>
+
+			<input id="chkRunMarine" type="checkbox"  style="margin: 0px 0px 0px 20px;" checked>
+			<label style="font-size: 60%; margin: 0px 0px 10px 0px;"><b>marine を使う</b></label>
+			
+		</div>
+		<select id="selClener" style="width: 350px;">
+			<option value="">--- モデルに設定されてるデフォルト ---</option>
+			<option value="japanese_cleaners">japanese_cleaners</option>
+			<option value="japanese_cleaners2">japanese_cleaners2</option>
+			<option value="zh_ja_mixture_cleaners">zh_ja_mixture_cleaners</option>
+			<option value="cjks_cleaners">cjks_cleaners</option>
+			<option value="cjke_cleaners">cjke_cleaners</option>
+			<option value="cjke_cleaners2">cjke_cleaners2</option>
+<!--
+			<option value="chinese_dialect_cleaners">chinese_dialect_cleaners</option>
+			<option value="chinese_cleaners">chinese_cleaners</option>
+			<option value="korean_cleaners">korean_cleaners</option>
+			<option value="sanskrit_cleaners">sanskrit_cleaners</option>
+			<option value="thai_cleaners">thai_cleaners</option>
+			<option value="shanghainese_cleaners">shanghainese_cleaners</option>
+-->			
+		</select>
+	</div>
+
+	<div style="display: flex; flex-direction: column; margin: 0px 0px 0px 20px;">
+		<div style="display: flex; flex-direction: row; margin: 5px 0px 0px 0px;">
+			<label style="font-size: 80%;">速度 : </label>
+			<b><label id="speedLabel" style="font-size: 90%;">1.0</label></b>
+		</div>
+		<input type="range" id="speedSlider" oninput="changeSlider" value="1.0" min="0.1" max="2" step="0.1" data-targetlabel="speedLabel">
+	</div>
+
+	<div style="display: flex; flex-direction: column; margin: 0px 0px 0px 20px;">
+		<div style="display: flex; flex-direction: row; margin: 5px 0px 0px 0px;">
+			<label style="font-size: 80%;">ノイズ : </label>
+			<b><label id="noiseLabel" style="font-size: 90%;">0.67</label></b>
+		</div>
+		<input type="range" id="noiseSlider" oninput="changeSlider" value="0.67" min="0.1" max="2" step="0.01" data-targetlabel="noiseLabel">
+	</div>
+	
+	<div style="display: flex; flex-direction: column; margin: 0px 0px 0px 20px;">
+		<div style="display: flex; flex-direction: row; margin: 5px 0px 0px 0px;">
+			<label style="font-size: 80%;">ノイズW : </label>
+			<b><label id="noisewLabel" style="font-size: 90%;">0.8</label></b>
+		</div>
+		<input type="range" id="noisewSlider" oninput="changeSlider" value="0.8" min="0.1" max="2" step="0.01" data-targetlabel="noisewLabel">
+	</div>
+
+</div>
+
+<button onclick="speachContainer.addData( '' );" style="margin: 20px 0px 0px 5px;">入力欄追加</button>
+
+<div id="speachContainer" style="display: flex; flex-direction: column; border:1px solid #333333; margin: 5px 0px 0px 0px;"> 
+</div>
+
+<br>
+<div style="height: 1px; display: flex; flex-direction: column; border:1px solid #333333; margin: 5px 0px 0px 0px;"> 
+</div>
+CREDIT
+<div style="display: flex; flex-direction: column;"> 
+
+	<div style="display: flex; flex-direction: row;"> 
+		<label><b>MoeGoe</b>　</label>
+		<a href="https://github.com/CjangCjengh/MoeGoe" target="_blank" rel="noopener noreferrer">https://github.com/CjangCjengh/MoeGoe</a>
+		<label>　ベースのコード</label>
+	</div>
+
+	<div style="display: flex; flex-direction: row;"> 
+		<label><b>pyopenjtalk</b>　</label>
+		<a href="https://github.com/r9y9/pyopenjtalk" target="_blank" rel="noopener noreferrer">https://github.com/r9y9/pyopenjtalk</a>
+		<label>　日本語テキストをアクセント付きの音素に分解してくれる</label>
+	</div>
+
+	<div style="display: flex; flex-direction: row;"> 
+		<label><b>marine</b>　</label>
+		<a href="https://github.com/6gsn/marine" target="_blank" rel="noopener noreferrer">https://github.com/6gsn/marine</a>
+		<label>　マルチタスク学習ベースの日本語アクセント推定</label>
+	</div>
+
+	<div style="display: flex; flex-direction: row;"> 
+		<label><b>Flask</b>　</label>
+		<a href="https://palletsprojects.com/p/flask/" target="_blank" rel="noopener noreferrer">https://palletsprojects.com/p/flask/</a>
+		<label>　Python でのシンプルな WEB アプリケーション構築フレームワーク</label>
+	</div>
+
+</div>
+
+
+<!--
+<button onclick="test();">
+test
+</button>
+-->
+
+
+
+<script>
+//////////////////////////////////////////////////////////////////
+class SpeachData{
+	constructor( rawText, audioSrc ){
+		this.modelName = "";
+		this.speakerId = null;
+		this.speakerName = "";
+
+		let width = 800;
+		this.element = document.createElement( "div" );
+		this.element.style = "display: flex; flex-direction: row;";
+
+		let elDiv1 = document.createElement( "div" );
+		elDiv1.style = "display: flex; flex-direction: column;";
+		this.element.appendChild( elDiv1 );
+		
+		this.elLabelModel = document.createElement( "label" );
+		this.elLabelModel.style = "font-size: 80%; width: 150px; height: 20px; border:1px solid #cccccc; margin: 5px 0px 0px 0px;";
+		elDiv1.appendChild( this.elLabelModel );
+		
+		this.elLabelSpeaker = document.createElement( "label" );
+		this.elLabelSpeaker.style = "font-size: 80%; width: 150px; height: 20px; border:1px solid #cccccc; margin: 0px 0px 0px 0px;";
+		elDiv1.appendChild( this.elLabelSpeaker );
+		
+		let elDiv2 = document.createElement( "div" );
+		elDiv2.style = "display: flex; flex-direction: column;";
+		this.element.appendChild( elDiv2 );
+		
+		this.elRawInput = document.createElement( "input" );
+		this.elRawInput.type = "text";
+		this.elRawInput.style = "width: " + width + "px; height: 30px; border:2px solid #333333; margin: 5px 0px 0px 0px;";
+		this.elRawInput.value = rawText;
+		elDiv2.appendChild( this.elRawInput );
+		
+		this.elCleanInput = document.createElement( "input" );
+		this.elCleanInput.type = "text";
+		this.elCleanInput.style = "width: " + width + "px; height: 30px; border:2px solid #333333; margin: 0px 0px 0px 0px;";
+		this.elCleanInput.style.display = "none";
+		elDiv2.appendChild( this.elCleanInput );
+
+		this.elAudio = document.createElement( "audio" );
+		this.elAudio.controls = true;
+		this.elAudio.loop = true;
+		this.elAudio.src = audioSrc;
+		this.elAudio.style = "width: " + width + "px; height: 20px;";
+		elDiv2.appendChild( this.elAudio );
+		
+		let elDiv3 = document.createElement( "div" );
+		elDiv3.style = "display: flex; flex-direction: column;";
+		this.element.appendChild( elDiv3 );
+		
+		this.elButton = document.createElement( "button" );
+		this.elButton.style = "width: 60px; height: 30px; margin: 5px 0px 0px 0px;";
+		this.elButton.innerHTML = "生成";
+		this.elButton.speachData = this;
+		this.elButton.cleaned = "false";
+		this.elButton.onclick = this.generate;
+		elDiv3.appendChild( this.elButton );
+		
+		this.elCleanButton = document.createElement( "button" );
+		this.elCleanButton.style = "width: 60px; height: 30px; margin: 0px 0px 0px 0px;";
+		this.elCleanButton.innerHTML = "生成";
+		this.elCleanButton.style.display = "none";
+		this.elCleanButton.speachData = this;
+		this.elCleanButton.cleaned = "true";
+		this.elCleanButton.onclick = this.generate;
+		elDiv3.appendChild( this.elCleanButton );
+
+	}
+
+	generate( e ){
+		
+		clearInfo();
+//console.log( e );
+
+		let data = e.target.speachData;
+		
+		let model_data_idx = document.querySelector( "#selModel" ).value;
+		let speaker_id = document.querySelector( "#selSpeaker" ).value;
+		if( speaker_id == "" ){
+			setInfo( "SPEAKER が未選択" );
+			return;
+		}
+		
+		let isCleaned = e.target.cleaned;
+//console.log( isCleaned );
+
+		let speed = 1.0 / speedSlider.value;
+		let noise = noiseSlider.value;
+		let noiseW = noisewSlider.value;
+		
+		
+		// create text
+		var sendText = "";
+		if( isCleaned == "true" ){
+			sendText = data.elCleanInput.value;
+		} else {
+			sendText = data.elRawInput.value;
+		}
+//console.log( isCleaned );
+
+		let clener = modelDatas[ model_data_idx ].text_cleaners;
+		let selClener = document.querySelector( "#selClener" ).value;
+		if( selClener != "" ){
+			clener = selClener;
+		}
+//console.log( clener );
+		
+		// speed
+		sendText = "[LENGTH=" + speed + "]" + sendText;
+		// noise
+		sendText = "[NOISE=" + noise + "]" + sendText;
+		// noise
+		sendText = "[NOISEW=" + noiseW + "]" + sendText;
+		
+		
+		// [JA]
+		let isNeedJA = false;
+		if(    clener == "zh_ja_mixture_cleaners"
+			|| clener == "cjks_cleaners"
+			|| clener == "cjke_cleaners"
+			|| clener == "cjke_cleaners2"
+			|| clener == "chinese_dialect_cleaners" )
+		{
+			isNeedJA = true;
+		} else {
+			isNeedJA = false;
+		}
+				
+		if(    isNeedJA == true 
+			&& document.querySelector( "#chkAutoJA" ).checked == true 
+			&& isCleaned == "false"
+		){
+			sendText = "[JA]" + sendText + "[JA]";
+		}
+//console.log( sendText );
+		
+		// run_marine
+		let run_marine = "false";
+		if( document.querySelector( "#chkRunMarine" ).checked == true ){
+			run_marine = "true";
+		}
+//console.log( run_marine );
+		
+		// send
+console.log( "data: " + sendText );
+console.log( "model_data_idx: " + model_data_idx );
+console.log( "speaker_id: " + speaker_id );
+console.log( "clener: " + clener );
+console.log( "cleaned: " + isCleaned );
+console.log( "run_marine: " + run_marine );
+
+		sendCommand( 
+			"Generate",
+			{
+				data: sendText,
+				model_data_idx: model_data_idx,
+				speaker_id: speaker_id,
+				clener: clener,
+				cleaned: isCleaned,
+				run_marine: run_marine
+			},
+			function( res ){
+console.log( res );
+				// model name
+				data.modelName = modelDatas[ selModel.selectedIndex ].modelDir;
+				data.elLabelModel.innerHTML = data.modelName.substr( 0, 10 );;
+				data.speakerId = document.querySelector( "#selSpeaker" ).value;
+				
+//console.log( res );
+				// speaker name
+				let sel = document.querySelector( "#selSpeaker" );
+				let idx = sel.selectedIndex;
+				data.speakerName = sel.children[ idx ].text;
+				data.elLabelSpeaker.innerHTML = data.speakerName.substr( 0, 10 );
+
+
+				data.elAudio.src = "http://127.0.0.1:15000" + res.audio_path;
+				data.elAudio.play();
+				
+				data.elCleanInput.value = res.clean_text;
+				data.elCleanInput.style.display = "";
+				data.elCleanButton.style.display = "";
+
+				
+				return;
+			}
+		);
+	}
+}
+
+
+class SpeachContainer{
+	constructor( divId ){
+		this.element = document.querySelector( "#" + divId );
+	}
+	
+	addData( rawText ){
+		let newData = new SpeachData( rawText, "" );
+		this.element.insertBefore( newData.element, this.element.firstChild );
+	}
+	removeData(){
+	}
+	
+}
+
+var speachContainer = new SpeachContainer( "speachContainer" );
+speachContainer.addData( "こんにちわ、今日はいい天気ですね。" );
+speachContainer.addData( "トンネルを抜けると、そこは雪国だった。" );
+speachContainer.addData( "はじめまして。こんにちわ。おはようございます。さようなら。" );
+
+
+//////////////////////////////////////////////////////////////////
+
+function removeAllChildNodes( parent ){
+	while( parent.firstChild ){
+		parent.removeChild( parent.firstChild );
+	}
+}
+
+//////////////////////////////////////////////////////////////////
+
+function sendCommand( command, datas, responseFunc ){
+	
+	lockUI( true );
+
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function () {
+		if( xhttp.readyState === XMLHttpRequest.DONE ){
+			const status = xhttp.status;
+			if( status === 0 || ( status >= 200 && status < 400 ) ){
+				responseFunc( JSON.parse( this.response ) );
+			} else {
+				setInfo( "SERVER_ERROR : Status " + status );
+			}
+			
+			lockUI( false );
+		}
+	};
+	xhttp.open( "POST", "http://127.0.0.1:15000/", true );
+	xhttp.setRequestHeader( "Content-type", "application/x-www-form-urlencoded" );
+	let postData = "command=" + command;
+	for( let key in datas ){
+		postData += "&" + key + "=" + datas[ key ];
+	}
+	xhttp.send( postData );
+}
+
+//////////////////////////////////////////////////////////////////
+
+var modelDatas = [];
+
+// ModelList
+function getModelList(){
+		
+	sendCommand( 
+		"GetModelList",
+		{ data: "none" },
+		function( res ){
+
+			modelDatas = res.modelDatas;
+console.log( modelDatas );
+//console.log( modelDatas.length );
+//console.log( modelDatas[ 0 ].speakers );
+
+			let sel = document.querySelector( "#selModel" );
+			removeAllChildNodes( sel );
+			let len = modelDatas.length;
+			for( let i = 0; i < len; i++ ){
+				
+				modelDatas[ i ].selModelText = 
+					  modelDatas[ i ].modelDir
+					+ " : " + modelDatas[ i ].model_type
+					+ " : " + modelDatas[ i ].speakers.length
+					+ " : " + modelDatas[ i ].text_cleaners
+				;
+				
+	   			let option = document.createElement( "option" );
+				option.value = i;
+				option.text = modelDatas[ i ].selModelText;
+				if( modelDatas[ i ].model_type != "TTS" ){
+					option.disabled = true;
+				}
+				sel.appendChild( option );
+				if( i == 0 ){
+					sel.value = option.value;
+				}
+			}
+			changeModel();
+			
+			// onChange
+			sel.addEventListener( "change", changeModel );
+
+		}
+	);
+}
+
+function changeModel(){
+
+	let speakerSerch = document.querySelector( "#selSpeakerSerch" );
+	speakerSerch.value = "";
+
+	let sel = document.querySelector( "#selSpeaker" );
+	sel.value = 0;
+	removeAllChildNodes( sel );
+
+	let idx = document.querySelector( "#selModel" ).value;
+	speakers = modelDatas[ idx ].speakers;
+	let len = speakers.length;
+	for( let i = 0; i < len; i++ ){
+		let option = document.createElement( "option" );
+		option.value = i;
+		option.text = speakers[ i ];
+		sel.appendChild( option );
+	}
+}
+
+
+
+// initialize
+getModelList();
+
+
+///////////////////////////////////////////////////////////////
+var selSpeakerSerch = document.querySelector( "#selSpeakerSerch" );
+selSpeakerSerch.addEventListener( 'change', changeSpeakerSerch );
+function changeSpeakerSerch(){
+	let word = document.querySelector( "#selSpeakerSerch" ).value;
+//console.log( word );
+
+	let sel = document.querySelector( "#selSpeaker" );
+	removeAllChildNodes( sel );
+	sel.value = "";
+
+	let idx = document.querySelector( "#selModel" ).value;
+	speakers = modelDatas[ idx ].speakers;
+	let len = speakers.length;
+	for( let i = 0; i < len; i++ ){
+		if( speakers[ i ].indexOf( word ) != -1 ){
+			let option = document.createElement( "option" );
+			option.value = i;
+			option.text = speakers[ i ];
+			sel.appendChild( option );
+		}
+	}
+	if( sel.childNodes.length != 0 ){
+console.log( "ok" );
+		sel.childNodes[ 0 ].selected  = true;
+		sel.value = sel.childNodes[ 0 ].value;
+	}
+console.log( "sel.value: " + sel.value );
+
+
+
+
+/*
+
+	let sel = document.querySelector( "#selSpeaker" );
+	sel.value = "";
+	let len = sel.childNodes.length;
+	for( let i = 0; i < len; i++ ){
+		let option = sel.childNodes[ i ];
+//console.log( sel.childNodes[ i ].text );
+//console.log( sel.childNodes[ i ].text.indexOf( word ) );
+		if( sel.childNodes[ i ].text.indexOf( word ) == -1 ){
+//console.log( "none" );
+			option.style.display = "none";
+		} else {
+//console.log( "ok" );
+			option.style.display = "block";
+			if( sel.value == "" ){
+				sel.value = option.value;
+				option.selected = true;
+			}
+		}
+	}
+*/
+
+}
+
+///////////////////////////////////////////////////////////////
+
+function lockUI( flg ){
+	let elements = document.querySelectorAll( 'button' );
+	let len = elements.length;
+	for( let i = 0; i < len; i++ ){
+		elements[ i ].disabled = flg;
+	}
+	elements = document.querySelectorAll( 'select' );
+	len = elements.length;
+	for( let i = 0; i < len; i++ ){
+		elements[ i ].disabled = flg;
+	}
+	let el = document.querySelector( '#selSpeakerSerch' );
+	el.disabled = flg;
+
+
+
+}
+
+
+///////////////////////////////////////////////////////////////
+var speedSlider = document.querySelector( "#speedSlider" );
+speedSlider.addEventListener( 'input', changeSlider );
+
+var noiseSlider = document.querySelector( "#noiseSlider" );
+noiseSlider.addEventListener( 'input', changeSlider );
+
+var noisewSlider = document.querySelector( "#noisewSlider" );
+noisewSlider.addEventListener( 'input', changeSlider );
+
+function changeSlider( e ){
+	document.querySelector( "#" + e.target.dataset[ "targetlabel" ] ).innerHTML = e.target.value;
+}
+
+///////////////////////////////////////////////////////////////
+var info = document.querySelector( "#info" );
+
+function clearInfo(){
+	info.style.color = '#000000';
+	info.style.backgroundColor = '#ffffff';
+	info.innerHTML = "";
+}
+function setInfo( text ){
+	info.style.color = '#ffffff';
+	info.style.backgroundColor = '#ff0000';
+	info.innerHTML = text;
+}
+
+
+</script>
+
+
+
+</body>
+
+</html>
+
+
