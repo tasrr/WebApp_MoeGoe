@@ -76,6 +76,13 @@ https://github.com/CjangCjengh/TTSModels<br>
 # 説明
 - モデルデータを入れたフォルダを選択、次にスピーカーを選んで生成を押してください<br>
 
+- 感情ファイル<br>
+自作 npy ファイルは<br>
+./models/W2V2/npy/ フォルダの中へ<br>
+ファイル名が表示名になります<br>
+複数の npy を一つにまとめたタイプの npy には未対応です<br>
+<br>
+
 - 設定項目の CLENER<br>
 CLENER は入力文字列を音素表現の文字列に変換する物です<br>
 これの種類によって [JA] が必要になったりします<br>
