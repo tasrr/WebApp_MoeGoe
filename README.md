@@ -1,8 +1,10 @@
 # MoeGoe の ローカルWebアプリバージョン
 
+- TTS, VTS, HuBERT-VITS, W2V2-VITS に対応
+
 - marine でのアクセント補正追加
 
-![イラスト](https://user-images.githubusercontent.com/109923659/201433573-47ca6c32-855d-4e9a-b63f-3ba42bc3c46d.jpg)
+![イラスト2](https://user-images.githubusercontent.com/109923659/202389969-7c8cd4c7-1df1-48c8-992e-464f3cec2be6.jpg)
 
 <br>
 
@@ -29,14 +31,14 @@ models フォルダに入れる<br>
 ./models/CCCCC/model.pth と config.json<br>
 <br>
 <br>
-HuBERT-VITS 推論用データダウンロード<br>
+HuBERT-VITS 推論用データダウンロード ( 360 MB )<br>
 https://github.com/bshall/hubert/releases/download/v0.1/hubert-soft-0d54a1f4.pt<br>
 これが無いと HuBERT 対応のモデルデータが使えません。<br>
 models の HuBERT フォルダに入れる<br>
 ./models/HuBERT/hubert-soft-0d54a1f4.pt<br>
 <br>
 <br>
-W2V2-VITS 推論用データダウンロード<br>
+W2V2-VITS 推論用データダウンロード ( 582 MB たまにサイトがかなり重いです )<br>
 https://zenodo.org/record/6221127/files/w2v2-L-robust-12.6bc4a7fd-1.1.0.zip?download=1<br>
 これが無いと W2V2 対応のモデルデータが使えません。<br>
 解凍してできた model.onnx と model.yaml を<br>
