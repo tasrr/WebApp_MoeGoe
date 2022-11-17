@@ -1,7 +1,5 @@
 # MoeGoe の ローカルWebアプリバージョン
 
-- TTS のモデルデータのみ対応
-- Clener の選択機能追加
 - marine でのアクセント補正追加
 
 ![イラスト](https://user-images.githubusercontent.com/109923659/201433573-47ca6c32-855d-4e9a-b63f-3ba42bc3c46d.jpg)
@@ -30,11 +28,28 @@ models フォルダに入れる<br>
 ./models/BBBBB/model.pth と config.json<br>
 ./models/CCCCC/model.pth と config.json<br>
 <br>
+<br>
+HuBERT-VITS 推論用データダウンロード<br>
+https://github.com/bshall/hubert/releases/download/v0.1/hubert-soft-0d54a1f4.pt<br>
+これが無いと HuBERT 対応のモデルデータが使えません。<br>
+models の HuBERT フォルダに入れる<br>
+./models/HuBERT/hubert-soft-0d54a1f4.pt<br>
+<br>
+<br>
+W2V2-VITS 推論用データダウンロード<br>
+https://zenodo.org/record/6221127/files/w2v2-L-robust-12.6bc4a7fd-1.1.0.zip?download=1<br>
+これが無いと W2V2 対応のモデルデータが使えません。<br>
+解凍してできた model.onnx と model.yaml を<br>
+models の W2V2 フォルダに入れる<br>
+./models/W2V2/model.onnx<br>
+./models/W2V2/model.yaml<br>
+<br>
+<br>
 WebApp_MoeGoe.exe 実行<br>
 コンソールに<br>
-
 ```
-* Serving Flask app 'WebApp_MoeGoe'
+2 0 2 2 - 1 1 - 1 7   1 6 : 1 3 : 0 9 . 3 5 7 6 0 1 9   [ W : o n n x r u n t i m e : D e f a u l t ,   o n n x r u n t i m e _ p y b i n d _ s t a t e . c c : 1 6 4 1   o n n x r u n t i m e : : p y t h o n : : C r e a t e I n f e r e n c e P y b i n d S t a t e M o d u l e ]   I n i t   p r o v i d e r   b r i d g e   f a i l e d .
+  * Serving Flask app 'WebApp_MoeGoe'
  * Debug mode: off
 WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
  * Running on http://127.0.0.1:15000
@@ -43,7 +58,7 @@ Press CTRL+C to quit
 が出れば起動成功<br>
 ※　WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.<br>
 この赤字メッセージは使ってるフレームワーク Flask のデフォルトメッセージです<br>
-
+<br>
 <br>
 chrome で http://127.0.0.1:15000 にアクセス<br>
 <br>
