@@ -1,0 +1,149 @@
+<html>
+
+<head>
+</head>
+
+<body>
+
+<div style="display: flex; flex-direction: column; margin: 0px 0px 0px 20px;">
+
+
+
+<div style="display: flex; flex-direction: column; margin: 2px 0px 2px 0px;">
+
+	<label id="dropAudio" style="font-size: 80%; width: 400px; height: 100px; border:2px dashed; margin: 0px 0px 0px 0px;">
+		 ここに変換元 .wav または .mp3 ファイルをドロップ 
+	</label>
+
+	<label id="resultLog" style="font-size: 80%; width: 400px; height: 100px; border:2px solid; margin: 20px 0px 0px 0px;">
+	</label>
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+<script>
+////////////////////////////////////////////////////////////////////////////////////////
+class RequestQue{
+	constructor(){
+		this.que = [];
+		this.isRunning = false;
+	}
+	
+	push( file ){
+		this.que.push( file );
+	}
+	get(){
+		if( this.que == 0 ){
+			return null;
+		}
+		return this.que.shift();
+	}
+	
+	send(){
+		let file = this.get();
+		if( file == null ){
+			return;
+		}
+
+		const formData = new FormData();
+		formData.append( "file", file );
+
+		var me = this;
+		const xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function () {
+			if( xhttp.readyState === XMLHttpRequest.DONE ){
+				const status = xhttp.status;
+				if( status === 0 || ( status >= 200 && status < 400 ) ){
+
+					let res = JSON.parse( this.response );
+					me.responseFunc( res )
+
+				} else {
+					setInfo( "SERVER_ERROR : Status " + status );
+				}
+				
+				me.send();
+			}
+		};
+		xhttp.open( "POST", "http://127.0.0.1:15000/createNpy", true );
+		xhttp.send( formData );
+	}
+
+	responseFunc( res ){
+//console.log( res.filename );
+		document.querySelector( "#resultLog" ).text += res.filename + " : " + re.result + "\n";
+
+	}
+}
+
+var que = new RequestQue();
+
+
+////////////////////////////////////////////////////////////////////////////////////////
+var dropAudio = document.querySelector( "#dropAudio" );
+dropAudio.addEventListener( "dragover", dropDragOverFunc, false );
+dropAudio.addEventListener( "dragleave", dropDragleaveFunc, false );
+dropAudio.addEventListener( "drop", dropAudioDropFunc, false );
+
+function dropDragOverFunc( e ){
+	e.stopPropagation();
+	e.preventDefault();
+	e.target.style.background = '#e1bbf0';
+}
+function dropDragleaveFunc( e ){
+	e.stopPropagation();
+	e.preventDefault();
+	e.target.style.background = '#ffffff';
+}
+function dropAudioDropFunc( e ){
+	e.stopPropagation();
+	e.preventDefault();
+	e.target.style.background = '#ffffff';
+	
+	let files = e.dataTransfer.files;
+	let len = files.length;
+	for( let i = 0; i < len; i++ ){
+		let ext = files[ i ].name.split('.').pop();
+		if( ext == "mp3" || ext == "wav" ){
+			que.push( files[ i ] );
+		}
+	}
+	
+	que.send();
+
+}
+
+</script>
+
+
+</body>
+
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
